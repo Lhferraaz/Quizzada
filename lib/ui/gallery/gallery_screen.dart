@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_button.dart';
 import 'package:quizzada/ui/core/themes/qz_space.dart';
 import 'package:quizzada/ui/core/themes/qz_text.dart';
+import 'package:quizzada/ui/core/shared/widgets/qz_text_field.dart';
 
 /// Tela de desenvolvimento: mostra os componentes do app lado a lado.
 /// Não faz parte do app final.
@@ -74,6 +75,38 @@ class GalleryScreen extends StatelessWidget {
                   icon: Icons.arrow_forward,
                   expanded: true,
                   onPressed: () {},
+                ),
+              ],
+            ),
+            _Section(
+              title: 'Campo de texto',
+              children: [
+                const QzTextField(
+                  label: 'E-mail',
+                  hint: 'voce@email.com',
+                  leadingIcon: Icons.mail_outline,
+                ),
+                const SizedBox(height: QzSpace.s16),
+                const QzTextField(
+                  label: 'Nome',
+                  initialValue: 'Bia Ramos',
+                  leadingIcon: Icons.person_outline,
+                ),
+                const SizedBox(height: QzSpace.s16),
+                const QzTextField(
+                  label: 'Senha',
+                  hint: 'Mínimo de 8 caracteres',
+                  leadingIcon: Icons.lock_outline,
+                  obscureText: true,
+                ),
+                const SizedBox(height: QzSpace.s16),
+                QzTextField(
+                  label: 'E-mail',
+                  initialValue: 'bia.ramos@email',
+                  leadingIcon: Icons.mail_outline,
+                  autovalidateMode: AutovalidateMode.always,
+                  validator: (_) =>
+                      'Digite um e-mail válido, como nome@email.com',
                 ),
               ],
             ),
