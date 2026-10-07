@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:quizzada/ui/core/shared/widgets/qz_avatar.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_button.dart';
+import 'package:quizzada/ui/core/shared/widgets/qz_top_bar.dart';
 import 'package:quizzada/ui/core/themes/qz_space.dart';
 import 'package:quizzada/ui/core/themes/qz_text.dart';
+import 'package:quizzada/ui/core/themes/qz_colors.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_text_field.dart';
 
 /// Tela de desenvolvimento: mostra os componentes do app lado a lado.
@@ -107,6 +110,43 @@ class GalleryScreen extends StatelessWidget {
                   autovalidateMode: AutovalidateMode.always,
                   validator: (_) =>
                       'Digite um e-mail válido, como nome@email.com',
+                ),
+              ],
+            ),
+            _Section(
+              title: 'Barra do topo',
+              children: [
+                QzTopBar(
+                  title: 'Nova conta',
+                  type: QzTopBarType.close,
+                  onLeadingPressed: () {},
+                ),
+                QzTopBar(
+                  title: 'Regras da sala do quiz de sexta-feira à noite',
+                  type: QzTopBarType.close,
+                  onLeadingPressed: () {},
+                  trailingIcon: Icons.share_outlined,
+                  onTrailingPressed: () {},
+                ),
+              ],
+            ),
+            const _Section(
+              title: 'Avatar',
+              children: [
+                QzAvatar(
+                  initials: 'BR',
+                  size: QzAvatarSize.small,
+                  color: QzColors.gameA,
+                ),
+                QzAvatar(
+                  initials: 'BR',
+                  size: QzAvatarSize.large,
+                  color: QzColors.gameC,
+                ),
+                QzAvatar(
+                  initials: 'BR',
+                  size: QzAvatarSize.extraLarge,
+                  color: QzColors.gameD,
                 ),
               ],
             ),
