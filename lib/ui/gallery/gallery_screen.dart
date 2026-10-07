@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quizzada/ui/auth/screens/login_screen.dart';
+import 'package:quizzada/ui/auth/screens/splash_screen.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_avatar.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_button.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_top_bar.dart';
@@ -150,6 +152,29 @@ class GalleryScreen extends StatelessWidget {
                 ),
               ],
             ),
+            _Section(
+              title: 'Telas',
+              children: [
+                Wrap(
+                  spacing: QzSpace.s12,
+                  runSpacing: QzSpace.s12,
+                  children: [
+                    QzButton(
+                      label: 'Splash',
+                      size: QzButtonSize.medium,
+                      type: QzButtonType.secondary,
+                      onPressed: () => _open(context, const SplashScreen()),
+                    ),
+                    QzButton(
+                      label: 'Login',
+                      size: QzButtonSize.medium,
+                      type: QzButtonType.secondary,
+                      onPressed: () => _open(context, const LoginScreen()),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -178,4 +203,8 @@ class _Section extends StatelessWidget {
       ),
     );
   }
+}
+
+void _open(BuildContext context, Widget screen) {
+  Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
 }
