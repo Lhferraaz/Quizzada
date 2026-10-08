@@ -4,7 +4,7 @@ import 'package:quizzada/ui/core/themes/qz_radius.dart';
 import 'package:quizzada/ui/core/themes/qz_space.dart';
 import 'package:quizzada/ui/core/themes/qz_text.dart';
 
-class QzTextField extends StatelessWidget {
+class QzTextField extends StatefulWidget {
   const QzTextField({
     super.key,
     required this.label,
@@ -31,28 +31,41 @@ class QzTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
 
   @override
+  State<QzTextField> createState() => _QzTextFieldState();
+}
+
+class _QzTextFieldState extends State<QzTextField> {
+  late bool _obscured;
+
+  @override
+  void initState() {
+    super.initState();
+    _obscured = widget.obscureText;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          label,
+          widget.label,
           style: QzText.labelS.copyWith(color: QzColors.textSecondary),
         ),
         const SizedBox(height: QzSpace.s8),
         TextFormField(
-          initialValue: initialValue,
-          controller: controller,
-          obscureText: obscureText,
-          keyboardType: keyboardType,
-          validator: validator,
-          autovalidateMode: autovalidateMode,
-          onChanged: onChanged,
+          initialValue: widget.initialValue,
+          controller: widget.controller,
+          obscureText: _obscured,
+          keyboardType: widget.keyboardType,
+          validator: widget.validator,
+          autovalidateMode: widget.autovalidateMode,
+          onChanged: widget.onChanged,
           style: QzText.bodyL.copyWith(color: QzColors.textPrimary),
           cursorColor: QzColors.textPrimary,
           errorBuilder: (context, message) => _ErrorMessage(message),
           decoration: InputDecoration(
-            hintText: hint,
+            hintText: widget.hint,
             hintStyle: QzText.bodyL.copyWith(color: QzColors.textMuted),
             filled: true,
             fillColor: QzColors.bgSurface,
@@ -61,7 +74,7 @@ class QzTextField extends StatelessWidget {
               horizontal: QzSpace.s16,
               vertical: 15,
             ),
-            prefixIcon: leadingIcon == null
+            prefixIcon: widget.leadingIcon == null
                 ? null
                 : Padding(
                     padding: const EdgeInsets.only(
@@ -69,12 +82,32 @@ class QzTextField extends StatelessWidget {
                       right: QzSpace.s12,
                     ),
                     child: Icon(
-                      leadingIcon,
+                      widget.leadingIcon,
                       size: 20,
                       color: QzColors.textSecondary,
                     ),
                   ),
             prefixIconConstraints: const BoxConstraints(),
+            suffixIcon: widget.obscureText
+                ? GestureDetector(
+                    onTap: () => setState(() => _obscured = !_obscured),
+                    behavior: HitTestBehavior.opaque,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: QzSpace.s16,
+                        vertical: QzSpace.s12,
+                      ),
+                      child: Icon(
+                        _obscured
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                        size: 20,
+                        color: QzColors.textSecondary,
+                      ),
+                    ),
+                  )
+                : null,
+            suffixIconConstraints: const BoxConstraints(),
             enabledBorder: _border(QzColors.borderSubtle, 1),
             focusedBorder: _border(QzColors.borderFocus, 1.5),
             errorBorder: _border(QzColors.feedbackDanger, 1.5),
