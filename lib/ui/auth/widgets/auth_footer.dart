@@ -26,8 +26,11 @@ class AuthFooter extends StatelessWidget {
         const SizedBox(width: 6),
         GestureDetector(
           onTap: onPressed,
-          child: Text(actionLabel, style: QzText.labelM.copyWith(color: QzColors.textPrimary),),
-        )
+          child: Text(
+            actionLabel,
+            style: QzText.labelM.copyWith(color: QzColors.textPrimary),
+          ),
+        ),
       ],
     );
   }
