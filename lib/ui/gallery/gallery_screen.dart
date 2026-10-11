@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzada/ui/auth/screens/cadastro_screen.dart';
 import 'package:quizzada/ui/auth/screens/login_screen.dart';
 import 'package:quizzada/ui/auth/screens/splash_screen.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_avatar.dart';
@@ -170,6 +171,12 @@ class GalleryScreen extends StatelessWidget {
                       size: QzButtonSize.medium,
                       type: QzButtonType.secondary,
                       onPressed: () => _open(context, const LoginScreen()),
+                    ),
+                    QzButton(
+                      label: 'Cadastro',
+                      size: QzButtonSize.medium,
+                      type: QzButtonType.secondary,
+                      onPressed: () => _open(context, const SingUpScreen()),
                     ),
                   ],
                 ),
