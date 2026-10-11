@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzada/ui/auth/screens/cadastro_screen.dart';
 import 'package:quizzada/ui/auth/widgets/auth_footer.dart';
 import 'package:quizzada/ui/auth/widgets/brand_logo.dart';
 import 'package:quizzada/ui/auth/widgets/google_button.dart';
@@ -100,7 +101,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 AuthFooter(
                   question: 'Não tem conta?',
                   actionLabel: 'Criar conta',
-                  onPressed: () {},
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const SingUpScreen()),
+                  ),
                 ),
               ],
             ),
