@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:quizzada/routing/routes.dart';
-import 'package:quizzada/ui/auth/screens/cadastro_screen.dart';
+import 'package:quizzada/ui/auth/screens/signUp_screen.dart';
 import 'package:quizzada/ui/auth/screens/login_screen.dart';
 import 'package:quizzada/ui/auth/screens/splash_screen.dart';
 import 'package:quizzada/ui/gallery/gallery_screen.dart';
