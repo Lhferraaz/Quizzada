@@ -7,7 +7,7 @@ import 'package:quizzada/ui/gallery/gallery_screen.dart';
 import 'package:quizzada/ui/home/screens/home_screen.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.splash,
+  initialLocation: Routes.gallery,
   routes: [
     GoRoute(
       path: Routes.splash,

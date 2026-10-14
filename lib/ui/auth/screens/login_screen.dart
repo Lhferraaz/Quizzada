@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quizzada/routing/routes.dart';
-import 'package:quizzada/ui/auth/screens/signUp_screen.dart';
 import 'package:quizzada/ui/auth/widgets/auth_footer.dart';
 import 'package:quizzada/ui/auth/widgets/brand_logo.dart';
 import 'package:quizzada/ui/auth/widgets/google_button.dart';

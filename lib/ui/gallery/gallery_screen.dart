@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizzada/ui/auth/screens/cadastro_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzada/routing/routes.dart';
+import 'package:quizzada/ui/auth/screens/signUp_screen.dart';
 import 'package:quizzada/ui/auth/screens/login_screen.dart';
 import 'package:quizzada/ui/auth/screens/splash_screen.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_avatar.dart';
@@ -164,19 +166,19 @@ class GalleryScreen extends StatelessWidget {
                       label: 'Splash',
                       size: QzButtonSize.medium,
                       type: QzButtonType.secondary,
-                      onPressed: () => _open(context, const SplashScreen()),
+                      onPressed: () => context.push(Routes.splash),
                     ),
                     QzButton(
                       label: 'Login',
                       size: QzButtonSize.medium,
                       type: QzButtonType.secondary,
-                      onPressed: () => _open(context, const LoginScreen()),
+                      onPressed: () => context.push(Routes.login),
                     ),
                     QzButton(
                       label: 'Cadastro',
                       size: QzButtonSize.medium,
                       type: QzButtonType.secondary,
-                      onPressed: () => _open(context, const SingUpScreen()),
+                      onPressed: () => context.push(Routes.singUp),
                     ),
                   ],
                 ),
