@@ -180,6 +180,7 @@ class GalleryScreen extends StatelessWidget {
                       type: QzButtonType.secondary,
                       onPressed: () => context.push(Routes.singUp),
                     ),
+                    QzButton(label: 'Home', size: QzButtonSize.medium, type: QzButtonType.secondary, onPressed: () => context.push(Routes.home))
                   ],
                 ),
               ],
