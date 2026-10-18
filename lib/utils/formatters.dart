@@ -44,4 +44,12 @@ abstract final class Formatters {
     final month = _months[date.month - 1];
     return '$weekday, ${date.day} de $month';
   }
+
+  static String playCount(int count) {
+    if (count == 1) return '1 partida';
+    if (count < 1000) return '$count partidas';
+
+    final thousands = (count / 1000).toStringAsFixed(1).replaceAll('.', ',');
+    return '$thousands mil partidas';
+  }
 }

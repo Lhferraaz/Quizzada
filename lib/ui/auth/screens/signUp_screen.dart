@@ -9,7 +9,7 @@ import 'package:quizzada/ui/core/shared/widgets/qz_top_bar.dart';
 import 'package:quizzada/ui/core/themes/qz_colors.dart';
 import 'package:quizzada/ui/core/themes/qz_space.dart';
 import 'package:quizzada/ui/core/themes/qz_text.dart';
-import 'package:quizzada/utils/formatter.dart';
+import 'package:quizzada/utils/formatters.dart';
 import 'package:quizzada/utils/validators.dart';
 
 class SingUpScreen extends StatefulWidget {
