@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizzada/ui/auth/screens/cadastro_screen.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzada/routing/routes.dart';
 import 'package:quizzada/ui/auth/widgets/auth_footer.dart';
 import 'package:quizzada/ui/auth/widgets/brand_logo.dart';
 import 'package:quizzada/ui/auth/widgets/google_button.dart';
@@ -25,12 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
 
-    final email = _emailController.text.trim();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Tudo certo, $email! O login de verdade vem na fase 2'),
-      ),
-    );
+    context.go(Routes.home);
   }
 
   @override
@@ -101,9 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 AuthFooter(
                   question: 'Não tem conta?',
                   actionLabel: 'Criar conta',
-                  onPressed: () => Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const SingUpScreen()),
-                  ),
+                  onPressed: () => context.push(Routes.singUp),
                 ),
               ],
             ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quizzada/routing/routes.dart';
 import 'package:quizzada/ui/auth/widgets/auth_footer.dart';
 import 'package:quizzada/ui/auth/widgets/avatar_picker_card.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_button.dart';
@@ -7,7 +9,7 @@ import 'package:quizzada/ui/core/shared/widgets/qz_top_bar.dart';
 import 'package:quizzada/ui/core/themes/qz_colors.dart';
 import 'package:quizzada/ui/core/themes/qz_space.dart';
 import 'package:quizzada/ui/core/themes/qz_text.dart';
-import 'package:quizzada/utils/formatter.dart';
+import 'package:quizzada/utils/formatters.dart';
 import 'package:quizzada/utils/validators.dart';
 
 class SingUpScreen extends StatefulWidget {
@@ -27,16 +29,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
   void submit() {
     if (!_formKey.currentState!.validate()) return;
 
-    final email = _emailController.text.trim();
-    final nome = _nomeController.text.trim();
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Tudo certo, $nome e $email! O login real será implementado depois',
-        ),
-      ),
-    );
+    context.go(Routes.home);
   }
 
   @override
@@ -74,7 +67,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
                       AvatarPickerCard(
                         initials: Formatters.initials(_nomeController.text),
                         color: _color,
-                        onColorChanged: (color) => setState(() => _color = color),
+                        onColorChanged: (color) =>
+                            setState(() => _color = color),
                       ),
                       const SizedBox(height: QzSpace.s20),
                       QzTextField(
