@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quizzada/data/models/quiz.dart';
 import 'package:quizzada/ui/core/shared/widgets/qz_avatar.dart';
+import 'package:quizzada/ui/core/shared/widgets/qz_button.dart';
 import 'package:quizzada/ui/core/themes/qz_colors.dart';
 import 'package:quizzada/ui/core/themes/qz_space.dart';
 import 'package:quizzada/ui/core/themes/qz_text.dart';
@@ -50,8 +51,11 @@ class HomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: QzSpace.s32),
             quizzes.when(
+              skipLoadingOnRefresh: false,
               loading: () => const _Loading(),
-              error: (error, StackTrace) => const Text('Deu erro'),
+              error: (error, StackTrace) => _ErrorMessage(
+                onRetry: () => ref.invalidate(HomeViewModelProvider),
+              ),
               data: (list) => _QuizList(
                 quizzes: list,
                 onQuizTap: (quiz) =>
@@ -143,6 +147,34 @@ class _Loading extends StatelessWidget {
       padding: EdgeInsets.only(top: QzSpace.s40),
       child: Center(
         child: CircularProgressIndicator(color: QzColors.textPrimary),
+      ),
+    );
+  }
+}
+
+class _ErrorMessage extends StatelessWidget {
+  const _ErrorMessage({required this.onRetry});
+
+  final VoidCallback onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: QzSpace.s40),
+      child: Column(
+        children: [
+          Text(
+            'Não deu para carregar os quizzes.',
+            style: QzText.bodyM.copyWith(color: QzColors.textSecondary),
+          ),
+          const SizedBox(height: QzSpace.s16),
+          QzButton(
+            label: 'Tentar de novo',
+            size: QzButtonSize.medium,
+            type: QzButtonType.secondary,
+            onPressed: onRetry,
+          ),
+        ],
       ),
     );
   }
