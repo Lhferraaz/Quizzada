@@ -5,7 +5,6 @@ class FakeQuizService implements QuizService {
   @override
   Future<List<Map<String, dynamic>>> fetchQuizzes() async {
     await Future.delayed(const Duration(seconds: 1));
-    throw Exception('Sem internet');
     return [
       {
         'id': 'widgets-do-flutter',
