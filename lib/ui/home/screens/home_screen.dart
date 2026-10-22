@@ -50,7 +50,7 @@ class HomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: QzSpace.s32),
             quizzes.when(
-              loading: () => const Text('Carregando...'),
+              loading: () => const _Loading(),
               error: (error, StackTrace) => const Text('Deu erro'),
               data: (list) => _QuizList(
                 quizzes: list,
@@ -130,6 +130,20 @@ class _QuizList extends StatelessWidget {
           const SizedBox(height: QzSpace.s12),
         ],
       ],
+    );
+  }
+}
+
+class _Loading extends StatelessWidget {
+  const _Loading();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(top: QzSpace.s40),
+      child: Center(
+        child: CircularProgressIndicator(color: QzColors.textPrimary),
+      ),
     );
   }
 }
