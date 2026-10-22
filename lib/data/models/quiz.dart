@@ -15,14 +15,16 @@ class Quiz {
     required this.cover,
   });
 
-  factory Quiz.frommap(Map<String, dynamic> map) {
+  factory Quiz.fromMap(Map<String, dynamic> map) {
+    // ← novo
     return Quiz(
+      // ← novo
       id: map['id'] as String,
       title: map['title'] as String,
       category: map['category'] as String,
       questionCount: map['questionCount'] as int,
-      playCount: map['playCount'],
-      cover: map['cover'],
-    );
-  }
+      playCount: map['playCount'] as int,
+      cover: map['cover'] as String,
+    ); // ← novo
+  } //~
 }
